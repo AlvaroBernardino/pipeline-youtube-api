@@ -1,0 +1,30 @@
+name: Deploy para GCP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Autenticar com GCP
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+    - name: Configurar o SDK do Google Cloud
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: pipeline-youtube-api
+        install_components: 'gsutil'
+
+    - name: Fazer upload dos arquivos para o bucket
+      run: |
+        gsutil -m cp -r src gs://pipeline-youtube-alvaro/
+        gsutil -m cp -r data gs://pipeline-youtube-alvaro/
