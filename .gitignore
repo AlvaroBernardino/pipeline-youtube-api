@@ -1,0 +1,19 @@
+# Credenciais do Google Cloud
+/config/client_secret.json
+
+# Dados brutos 
+
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+
+# Ambiente virtual
+venv/
+.env
+
+# Logs
+*.log
+
+# Configurações do editor
+.vscode/
+.idea/
