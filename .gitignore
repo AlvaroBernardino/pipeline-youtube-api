@@ -2,6 +2,8 @@
 /config/client_secret.json
 
 # Dados brutos 
+/data/comments/*
+/data/sql/*
 
 # Arquivos Python compilados
 __pycache__/
